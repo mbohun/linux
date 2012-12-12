@@ -3,7 +3,7 @@ linux
 
 my diff linux kernel configs are for now at: [http://users.on.net/~mbohun/linux](http://users.on.net/~mbohun/linux)
 
-grub2
+## grub2
 ```
 martin@yobbo:~$ grub-fstest --version
 grub-fstest (GRUB) 1.98
@@ -37,9 +37,8 @@ GRUB_DISABLE_LINUX_UUID="true"
 grub-reboot 2
 ```
 
-/sbin/installkernel
+## /sbin/installkernel
 ```
-# /sbin/installkernel
 martin@yobbo:~/src/kernel$ cat /sbin/installkernel
 #!/bin/sh
 #
@@ -54,7 +53,7 @@ martin@yobbo:~/src/kernel$ cat /sbin/installkernel
 /usr/sbin/grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-pat
+## pat
 ```
 martin@yobbo:~/src/kernel/linux$ uname -a
 Linux yobbo 3.3.1-00 #1 PREEMPT Tue Apr 3 10:50:04 EST 2012 i686 Intel(R) Pentium(R) M processor 2.00GHz GenuineIntel GNU/Linux
@@ -78,26 +77,26 @@ uncached-minus @ 0xf000b000-0xf000c000
 uncached-minus @ 0xfed00000-0xfed01000
 ```
 
-zram
+## zram
 ```
 # do we have zram compiled into the kernel? yes
 martin@yobbo:~/src/kernel$ dmesg|grep zram
 zram: num_devices not specified. Using default: 1
 zram: Creating 1 devices ...
 
-# no - or as a module?
+# no - perhaps as a module?
 martin@yobbo:~/src/kernel$ lsmod | grep zram
-moprobe zram
+modprobe zram
 
-# have a look whats available to fiddle with
+# have a look what parameters are available to fiddle with
 ls -laF /sys/block/zram0/
 
-# 512mb
+# let's make a 512mb zram
 cat /sys/block/zram0/disksize
 echo $((512*1024*1024)) > /sys/block/zram0/disksize
 cat /sys/block/zram0/disksize
 
-# example use as swap
+# example use as swap (set some high swap priority)
 mkswap /dev/zram0
 swapon -p 32766 /dev/zram0
 
