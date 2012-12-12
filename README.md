@@ -26,6 +26,12 @@ GRUB_TIMEOUT=6
 GRUB_DISABLE_LINUX_UUID="true"
 # GRUB_CMDLINE_LINUX_DEFAULT="vmalloc=256M reboot=w pci=nommconf,use_crs"
 
+# set the 3rd image (3rd grub menu entry) for the next boot
+grub-reboot 2
+```
+
+/sbin/installkernel
+```
 # /sbin/installkernel
 martin@yobbo:~/src/kernel$ cat /sbin/installkernel
 #!/bin/sh
@@ -39,9 +45,6 @@ martin@yobbo:~/src/kernel$ cat /sbin/installkernel
 /usr/bin/cat $2 > $4/vmlinuz-$1
 /usr/bin/cp  $3 $4/System-$1.map
 /usr/sbin/grub-mkconfig -o /boot/grub/grub.cfg
-
-# set the 3rd image (3rd grub menu entry) for the next boot
-grub-reboot 2
 ```
 
 pat
