@@ -7,14 +7,17 @@ grub2
 ```
 martin@yobbo:~$ grub-fstest --version
 grub-fstest (GRUB) 1.98
-
+```
+```
 martin@yobbo:~$ grub-fstest --version
 grub-fstest (GRUB) 1.99
-
+```
+```
 # WARNING: grub 1.99; /dev/root; ln -s /dev/sda1 /dev/root; udev rule
 #          /usr/sbin/grub-probe: error: cannot stat `/dev/root'
 grub-install /dev/sda
-
+```
+```
 # reboot=w required on my old laptop (DMI: TOSHIBA TECRA S3/Portable PC, BIOS Version 3.20 11/13/2007)
 #          for PMU to work after reboot (works fine after shutdown/boot)
 #          good: Performance Events: p6 PMU driver.
@@ -25,7 +28,8 @@ GRUB_DEFAULT="saved"
 GRUB_TIMEOUT=6
 GRUB_DISABLE_LINUX_UUID="true"
 # GRUB_CMDLINE_LINUX_DEFAULT="vmalloc=256M reboot=w pci=nommconf,use_crs"
-
+```
+```
 # set the 3rd image (3rd grub menu entry) for the next boot
 grub-reboot 2
 ```
