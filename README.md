@@ -13,8 +13,11 @@ martin@yobbo:~$ grub-fstest --version
 grub-fstest (GRUB) 1.99
 ```
 ```
-# WARNING: grub 1.99; /dev/root; ln -s /dev/sda1 /dev/root; udev rule
+# WARNING: grub 1.99; /dev/root; ln -s /dev/sda1 /dev/root
 #          /usr/sbin/grub-probe: error: cannot stat `/dev/root'
+#
+# or add an udev rule: test /dev/root symlink; grub2 1.99 seem to get all excited about /dev/root
+# SUBSYSTEMS=="block", KERNEL=="sda1", SYMLINK="root"
 grub-install /dev/sda
 ```
 ```
