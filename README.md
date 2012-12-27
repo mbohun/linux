@@ -85,22 +85,23 @@ zram: num_devices not specified. Using default: 1
 zram: Creating 1 devices ...
 
 # no - perhaps as a module?
-find /lib/modules/`uname -r` -name "zram.ko"
-modprobe zram
+martin@yobbo:~/src/kernel$ find /lib/modules/`uname -r` -name "zram.ko"
+martin@yobbo:~/src/kernel$ su
+root@yobbo:/home/martin/src/kernel# modprobe zram
 martin@yobbo:~/src/kernel$ lsmod | grep zram
 
 # have a look what parameters are available to fiddle with
-ls -laF /sys/block/zram0/
+martin@yobbo:~/src/kernel$ ls -laF /sys/block/zram0/
 
 # let's make a 512mb zram
-cat /sys/block/zram0/disksize
-echo $((512*1024*1024)) > /sys/block/zram0/disksize
-cat /sys/block/zram0/disksize
+martin@yobbo:~/src/kernel$ cat /sys/block/zram0/disksize
+root@yobbo:/home/martin/src/kernel# echo $((512*1024*1024)) > /sys/block/zram0/disksize
+martin@yobbo:~/src/kernel$ cat /sys/block/zram0/disksize
 
 # example use as swap (set some high swap priority)
-mkswap /dev/zram0
-swapon -p 32766 /dev/zram0
+root@yobbo:/home/martin/src/kernel# mkswap /dev/zram0
+root@yobbo:/home/martin/src/kernel# swapon -p 32766 /dev/zram0
 
 # later that day someone turned the swapoff
-swapoff /dev/zram0
+root@yobbo:/home/martin/src/kernel# swapoff /dev/zram0
 ```
