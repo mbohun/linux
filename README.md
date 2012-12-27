@@ -79,14 +79,15 @@ uncached-minus @ 0xfed00000-0xfed01000
 
 ## zram
 ```
-# do we have zram compiled into the kernel? yes
+# do we have zram compiled into the kernel?
 martin@yobbo:~/src/kernel$ dmesg|grep zram
 zram: num_devices not specified. Using default: 1
 zram: Creating 1 devices ...
 
 # no - perhaps as a module?
-martin@yobbo:~/src/kernel$ lsmod | grep zram
+find /lib/modules/`uname -r` -name "zram.ko"
 modprobe zram
+martin@yobbo:~/src/kernel$ lsmod | grep zram
 
 # have a look what parameters are available to fiddle with
 ls -laF /sys/block/zram0/
