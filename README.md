@@ -105,3 +105,17 @@ root@yobbo:/home/martin/src/kernel# swapon -p 32766 /dev/zram0
 # later that day someone turned the swapoff
 root@yobbo:/home/martin/src/kernel# swapoff /dev/zram0
 ```
+
+## misc
+```
+# amd/ati fglrx video driver config GUI
+[root@firewolf martin]# amdcccle
+
+#
+[root@firewolf martin]# dhclient p4p1
+[root@firewolf martin]# dhclient -r p4p1
+
+#
+[root@firewolf martin]# nmcli con up   id "Auto no_KNICKERS"
+[root@firewolf martin]# nmcli con down id "Auto no_KNICKERS"
+```
