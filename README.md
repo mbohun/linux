@@ -119,3 +119,14 @@ root@yobbo:/home/martin/src/kernel# swapoff /dev/zram0
 [root@firewolf martin]# nmcli con up   id "Auto no_KNICKERS"
 [root@firewolf martin]# nmcli con down id "Auto no_KNICKERS"
 ```
+
+## add swapfile
+```
+sudo dd if=/dev/zero of=/data/swapfile bs=1G count=8
+sudo chmod 600 /data/swapfile
+sudo /sbin/mkswap /data/swapfile 
+sudo /sbin/swapon /data/swapfile
+
+# add the swapfile to /etc/fstab
+/data/swapfile          swap            swap    defaults        0 0
+```
